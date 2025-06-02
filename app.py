@@ -10,8 +10,8 @@ st.set_page_config(page_title="🧩 Match the Snowflake OSS Tool", layout="cente
 # Create a cached Snowflake connection (only once per session)
 @st.cache_resource
 def get_snowflake_connection():
-    session = get_active_session()
-    return session.connection
+    connection = st.connection("snowflake")
+    return connection
 
 # Get a global connection and cursor
 conn = get_snowflake_connection()
