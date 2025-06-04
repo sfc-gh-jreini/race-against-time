@@ -98,7 +98,7 @@ if st.button("✅ Check My Matches"):
     # Insert the result into the Snowflake leaderboard table using the global cursor
     if "score_submitted" not in st.session_state:
         insert_query = f"""
-            INSERT INTO leaderboard_table_summitday2 (user_name, correct, duration) 
+            INSERT INTO leaderboard_table_summitday3 (user_name, correct, duration) 
             VALUES ('{st.session_state.user_name}', {correct}, '{duration:.2f}')
         """
         cursor.execute(insert_query)
@@ -110,7 +110,7 @@ with st.sidebar:
     try:
         select_query = """
             SELECT user_name, correct, duration 
-            FROM leaderboard_table_summitday2 
+            FROM leaderboard_table_summitday3 
             ORDER BY correct DESC, duration ASC
         """
         cursor.execute(select_query)
